@@ -79,10 +79,8 @@ segment.
    Tech: `apache/airflow:2.3.0`, with Python 3.7
    
    **Notes**:
-   
-    * Used [official Docker setup](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html) provided by apache-airflow.
-    
-    * Customized it to set `LocalExecutor` as Core Executor, `postgres_default` connection for airflow, and used a build-image to install requirements
+   * Used [official Docker setup](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html) provided by apache-airflow.
+   * Customized it to set `LocalExecutor` as Core Executor, `postgres_default` connection for airflow, and used a build-image to install requirements
 
    **Pipeline Flow**
 
