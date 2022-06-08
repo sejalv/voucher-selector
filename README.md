@@ -15,9 +15,14 @@ There are 3 steps that should be done:
 2. Create a REST API that will expose the most used voucher value for a particular customer
 segment.
 
-## Solution
+### Dataset
 
- ### Steps
+
+## Solution
+  
+For **Data exploration** (step 0), you could setup a Jupyter Notebook along with a test interface (such as Jupyter Lab) to explore the given dataset. Due to limited time, I've chosen to skip that, but you can look at the transformations (airflow tasks/utils) to get more understanding.
+
+### To setup and run the Data pipeline:
  
  1. First-time setup: Airflow local auth
     ```
@@ -46,19 +51,24 @@ segment.
     docker-compose exec webserver airflow trigger_dag voucher_selector
     ```
 
-    Or trigger from web UI: `http://127.0.0.1:8080/`
+    Or trigger from Airflow web UI: `http://127.0.0.1:8080/`
 
- 6. Call API (`voucher_segments`)
-    ```
-    curl -X GET -H "Content-type: application/json" -d '{"customer_id": 123, "country_code": "Peru", "last_order_ts": "2018-05-03 00:00:00", "first_order_ts": "2017-05-03 00:00:00", "total_orders": 15, "segment_name": "recency_segment"}' "http://localhost:5000/voucher_amount"
-    ```
-    Output:  `{"voucher_amount":[2640.0]}`
+### Finally, to call the Flask API
+
+(`voucher_segments`)
+
+```
+curl -X GET -H "Content-type: application/json" -d '{"customer_id": 123, "country_code": "Peru", "last_order_ts": "2018-05-03 00:00:00", "first_order_ts": "2017-05-03 00:00:00", "total_orders": 15, "segment_name": "recency_segment"}' "http://localhost:5000/voucher_amount"
+```
+Output:  `{"voucher_amount":[2640.0]}`
    
+   
+ ### Closing and cleanup
  
- 7. Close docker session, when everything is done
-    ```
-    docker-compose down
-    ```
+ Close docker session, when everything is done
+   ```
+   docker-compose down
+   ```
 
 
  ### Components
@@ -136,3 +146,4 @@ $ docker-compose exec webserver python -m unittest -v
 ## Future Enhancements
 * Parallelization of tasks (workers) possible, use of CeleryExecutor
 * ORM and security in Flask API
+* Setup Jupyter notebook interface
