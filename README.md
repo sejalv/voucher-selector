@@ -16,7 +16,9 @@ There are 3 steps that should be done:
 segment.
 
 ### Dataset
+https://dh-data-chef-hiring-test.s3.eu-central-1.amazonaws.com/data-eng/voucher-selector/data.parquet.gzip
 
+(Used https:// link instead of s3:// as the S3 link wasn't working, authentication was needed)
 
 ## Solution
   
